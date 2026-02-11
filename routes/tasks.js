@@ -14,7 +14,7 @@ router.post ("/create", async (req, res)=>{
 
 router.get("/all", async (req, res)=>{
     try {
-        const tasks = await Task.find()
+        const tasks = await Task.find({})
         res.status(200).send(tasks)
     } catch (error){
         console.error(error)
@@ -25,10 +25,11 @@ router.get("/all", async (req, res)=>{
 router.put("/update/:id", async (req, res)=>{
     try {
         const {id} = req.params
-        const task = await Task.findByIdAndUpdate(id, req.body, {new: true})
-        if (!task) {
+        const newtask = await Task.findByIdAndUpdate(id, req.body, {new: true})
+        if (!newtask) {
             return res.status(404).send({message: "Task not found"})
-        }       res.status(200).send(task)
+        } 
+        res.status(200).send(newtask)
     } catch (error){
         console.error(error) 
         res.status(500).send({message: "There was a problem updating the task"})

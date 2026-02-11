@@ -12,5 +12,5 @@ dbConnection();
 
 
 app.listen(port,()=>
-    console.log('el servidor está escuchando en el puerto http://localhost/8080')
+    console.log('el servidor está escuchando en el puerto http://localhost:8080')
 )
